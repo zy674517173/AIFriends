@@ -1,0 +1,7 @@
+__pycache__/        # python的中间件
+*.py[cod]           # 同上
+.idea/              # pycharm 的配置文件
+db.sqlite3          # 数据库
+media/
+staticfiles/
+static/

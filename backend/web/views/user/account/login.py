@@ -19,14 +19,14 @@ class LoginView(APIView):
 
             user = authenticate(username=username, password=password)       # 严重用户名和密码是否匹配，如果匹配返回用户，不匹配返回空
             if user:    # 用户名密码正确
-                user_profile = UserProfile.objects.get(username=username)
+                user_profile = UserProfile.objects.get(user=user)
                 refresh = RefreshToken.for_user(user)       # 生成jwt
                 response = Response({
                     'result': 'success',
                     'access': str(refresh.access_token),
                     'user_id': user.id,
                     'username': user.username,
-                    'photo': user_profile.pohto.url,
+                    'photo': user_profile.photo.url,
                     'profile': user_profile.profile,
                 })
                 # 设置一下cookie，把 refresh 放进 cookie 中
@@ -43,6 +43,8 @@ class LoginView(APIView):
                 'result': '用户名或密码错误'
             })
         except:
+            import traceback
+            print(traceback.format_exc())
             return Response({
                 'result': '系统异常，请稍后重试'
             })

@@ -72,9 +72,12 @@ api.interceptors.response.use(
                         {},
                         {withCredentials: true, timeout: 5000}
                     ).then(res => {
+                        // console.log('刷新成功，新 token:', res.data.access)
                         user.setAccessToken(res.data.access)
+                        // console.log('store 中的 token 已更新:', user.accessToken)
                         onRefreshed(res.data.access)
                     }).catch(error => {
+                        // console.log('刷新失败，错误信息:', error)
                         user.logout()
                         onRefreshFailed(error)
                         reject(error)

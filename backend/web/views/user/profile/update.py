@@ -27,7 +27,7 @@ class UpdateProfileView(APIView):
                     'result': '简介不能为空'
                 })
 
-            if username != user.username and User.objects.get(username=username).exists():
+            if username != user.username and User.objects.filter(username=username).exists():
                 return Response({
                     'result': '用户名已存在'
                 })
@@ -35,7 +35,7 @@ class UpdateProfileView(APIView):
             if photo:
                 remove_old_photo(user_profile.photo)
                 user_profile.photo = photo
-            user_profile = profile
+            user_profile.profile = profile
             user_profile.update_time = now()
             user_profile.save()
             user.username = username
@@ -44,7 +44,7 @@ class UpdateProfileView(APIView):
                 'result': 'success',
                 'user_id': user.id,
                 'username': user.username,
-                'profile': user_profile,
+                'profile': user_profile.profile,
                 'photo': user_profile.photo.url,        # 一定要返回 .url
             })
         except:

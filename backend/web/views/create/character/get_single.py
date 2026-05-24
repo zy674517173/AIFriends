@@ -11,7 +11,7 @@ class GetSingleCharacterView(APIView):
         try:
             # get方法传入的参数在request.query_params中；post方法传入的参数在request.data中。
             character_id = request.query_params.get('character_id')
-            character = Character.objects.get(pk=character_id, author__user=request.user)
+            character = Character.objects.get(id=character_id, author__user=request.user)
             return Response({
                 'result': 'success',
                 'character': {
@@ -19,7 +19,7 @@ class GetSingleCharacterView(APIView):
                     'name': character.name,
                     'profile': character.profile,
                     'photo': character.photo.url,   # 图片一定要加 url
-                    'background_image': character.background.url,
+                    'background_image': character.background_image.url,
                 }
             })
         except:

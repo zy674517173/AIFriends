@@ -14,6 +14,8 @@ from web.views.user.account.register import RegisterView
 from web.views.user.account.refresh_token import RefreshTokenView
 from web.views.user.profile.update import UpdateProfileView
 
+from web.views.homepage.index import HomepageIndexView
+
 urlpatterns = [
     path('api/user/account/login/', LoginView.as_view(), name='login'),
     path('api/user/account/logout/', LogoutView.as_view(), name='logout'),
@@ -27,6 +29,8 @@ urlpatterns = [
     path('api/create/character/update/', UpdateCharacterView.as_view(), name='update_character'),
     path('api/create/character/remove/', RemoveCharacterView.as_view(), name='remove_character'),
     path('api/create/character/get_list/', GetListCharacterView.as_view(), name='get_list'),
+
+    path('api/homepage/index/', HomepageIndexView.as_view(), name='homepage_index'),
 
     path('', index),
     # 在前端任意路径下刷新时，django都自动路由到根路径下，剩下的路由交由前端处理。

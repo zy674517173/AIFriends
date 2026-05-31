@@ -26,7 +26,7 @@ async function handleRemoveCharacter() {
 
     if (res.data.result === 'success') {
       emit('remove', props.character.id)
-      console.log('6. 删除成功，触发emit remove事件');
+      // console.log('6. 删除成功，触发emit remove事件');
     }
   } catch (err) {
     // console.log(err)

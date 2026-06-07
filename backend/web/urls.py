@@ -16,6 +16,10 @@ from web.views.user.profile.update import UpdateProfileView
 
 from web.views.homepage.index import HomepageIndexView
 
+from web.views.friend.remove import RemoveFriendView
+from web.views.friend.get_list import GetListFriendView
+from web.views.friend.get_or_create import GetOrCreateFriendView
+
 urlpatterns = [
     path('api/user/account/login/', LoginView.as_view(), name='login'),
     path('api/user/account/logout/', LogoutView.as_view(), name='logout'),
@@ -31,6 +35,11 @@ urlpatterns = [
     path('api/create/character/get_list/', GetListCharacterView.as_view(), name='get_list'),
 
     path('api/homepage/index/', HomepageIndexView.as_view(), name='homepage_index'),
+
+    path('api/friend/remove/', RemoveFriendView.as_view(), name='remove_friend'),
+    path('api/friend/get_list/', GetListFriendView.as_view(), name='get_list_friend'),
+    path('api/friend/get_or_create/', GetOrCreateFriendView.as_view(), name='get_or_create_friend'),
+
 
     path('', index),
     # 在前端任意路径下刷新时，django都自动路由到根路径下，剩下的路由交由前端处理。

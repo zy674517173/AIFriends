@@ -5,3 +5,4 @@ db.sqlite3          # 数据库
 media/
 staticfiles/
 static/
+/.codex

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from web.models.user import UserProfile
 from web.models.character import Character
-from web.models.friend import Friend
+from web.models.friend import Friend, Message
 
 
 # Register your models here.
@@ -19,3 +19,8 @@ class CharacterAdmin(admin.ModelAdmin):
 @admin.register(Friend)
 class FriendAdmin(admin.ModelAdmin):
     rea_id_fields = ('me', 'character',)       # 把外键加到这里
+
+
+@admin.register(Message)
+class MessagesAdmin(admin.ModelAdmin):
+    rea_id_fields = ('friend',)

@@ -62,10 +62,10 @@ defineExpose({
         placeholder="文本输入..."
     >
     <div @click="handleSend" class="absolute right-2 w-8 h-8 flex justify-center items-center cursor-pointer">
-      <SendIcon />
+      <SendIcon/>
     </div>
     <div class="absolute right-10 w-8 h-8 flex justify-center items-center cursor-pointer">
-      <MicIcon />
+      <MicIcon/>
     </div>
   </form>
 </template>

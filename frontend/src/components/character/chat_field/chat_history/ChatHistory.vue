@@ -26,6 +26,7 @@ async function loadMore() {
   let newMessages = []
   try {
     const res = await api.get('/api/friend/message/get_history/', {
+      // get 类型的参数，要放params里面
       params: {
         last_message_id: lastMessageId,
         friend_id: props.friendId,
@@ -99,6 +100,7 @@ async function scrollToBottom() {
   scrollRef.value.scrollTop = scrollRef.value.scrollHeight
 }
 
+// 在父组件 ChatField 中使用，所以要暴露给父组件
 defineExpose({
   scrollToBottom
 })

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from web.models.user import UserProfile
 from web.models.character import Character
-from web.models.friend import Friend, Message
+from web.models.friend import Friend, Message, SystemPrompt
 
 
 # Register your models here.
@@ -24,3 +24,6 @@ class FriendAdmin(admin.ModelAdmin):
 @admin.register(Message)
 class MessagesAdmin(admin.ModelAdmin):
     rea_id_fields = ('friend',)
+
+admin.site.register(SystemPrompt)
+# 不包含外键，直接注册就行了
